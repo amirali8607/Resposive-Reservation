@@ -1,0 +1,71 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+model User {
+  id        String        @id @default(cuid())
+  name      String?
+  email     String        @unique
+  password  String
+  role      UserRole      @default(USER)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  lists     Reservelist[]
+  doctors   Doctors[]
+  tricks    Tricks[]
+}
+
+model Doctors {
+  id        String        @id @default(cuid())
+  name      String        @unique
+  body      String
+  expertise String
+  addres    String
+  image     String?
+  userId    String
+  user      User          @relation(fields: [userId], references: [id])
+  lists     Reservelist[]
+  tricks    Tricks[]
+}
+
+model Tricks {
+  id       String  @id @default(cuid())
+  times    String
+  doctorId String
+  doctor   Doctors @relation(fields: [doctorId], references: [id])
+  userId   String
+  user     User    @relation(fields: [userId], references: [id])
+}
+
+model Reservelist {
+  id       String  @id @default(cuid())
+  time     String?
+  userId   String
+  doctorId String
+  user     User    @relation(fields: [userId], references: [id])
+  doctor   Doctors @relation(fields: [doctorId], references: [id])
+}
+
+model Siknesslist {
+  id          String  @id @default(cuid())
+  title       String  @unique
+  description String
+  image       String?
+  compare     String?
+}
