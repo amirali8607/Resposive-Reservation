@@ -20,7 +20,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <SessionProvider session={session}>
-        <body className="font-poppins min-h-screen flex flex-col gap-10 bg-[#e9e7e3]">
+        <body className="font-poppins h-screen flex flex-col gap-10 bg-[#e9e7e3]">
           <Navbar />
           <main>{children}</main>
           <Toaster />
