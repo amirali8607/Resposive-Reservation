@@ -1,12 +1,12 @@
-import orgimage from "@/public/home/orgimage.jpg";
+import orgimage from "@/public/home/homepicture.png";
 import { Github, GithubIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 function Intro() {
    return (
-      <div className="flex w-[85%] mx-auto gap-10 py-10 justify-center items-center max-[675px]:flex-col max-[675px]:text-center">
-         <main className=" flex flex-col gap-y-20">
-            <section className="flex flex-col gap-10 w-full">
+      <div className="grid grid-cols-2 px-24 mx-auto gap-10 py-10 place-content-center place-items-center max-[675px]:grid-cols-1 max-[675px]:text-center">
+         <main className=" flex flex-col gap-y-12">
+            <section className="flex flex-col gap-10">
                <h1 className="font-bold text-4xl">
                   Online Reservation Fullstack Project.
                </h1>
@@ -50,8 +50,8 @@ function Intro() {
                </div>
             </section>
          </main>
-         <section className="w-full">
-            <Image src={orgimage} alt="" className="rounded-xl h-[425px] max-[675px]:hidden" />
+         <section className="">
+            <Image src={orgimage} alt="" className="h-[425px] max-[675px]:hidden" />
          </section>
       </div>
    );
