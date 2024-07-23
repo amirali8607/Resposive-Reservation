@@ -5,7 +5,7 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 declare module "next-auth" {
   interface Session {
     user: {
-      role: "USER" | "ADMIN";
+      role: "USER" | "ADMIN" | "DOCTOR";
     } & DefaultSession["user"];
   }
 }
@@ -33,7 +33,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async session({ token, session }) {
       if (!token.role || !token.sub) return session;
 
-      session.user.role = token.role as "USER" | "ADMIN";
+      session.user.role = token.role as "USER" | "ADMIN" | "DOCTOR";
       session.user.id = token.sub;
 
       return session;

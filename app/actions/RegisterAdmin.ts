@@ -17,7 +17,7 @@ export const RegisterAdmin = async (formdata: FormData) => {
       name: formdata.get("name") as string,
       email: formdata.get("email") as string,
       password: await hash(formdata.get("password") as string, 18),
-      role: UserRole.ADMIN,
+      role: UserRole.DOCTOR,
     },
   });
 };

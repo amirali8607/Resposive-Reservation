@@ -39,24 +39,33 @@ async function Navbar() {
             >
                About me
             </Link>
-            {session?.user?.role == UserRole.ADMIN && (
-               <Link
-                  className="text-black/70 font-semibold text-sm transition-all duration-100 hover:text-blue-900/70"
-                  href="/admin"
-               >
-                  Manage
-               </Link>
-            )}
-            {user ? (
-               <SignoutButton />
-            ) : (
-               <Link
-                  href="/login"
-                  className="font-semibold text-black/70 text-sm transition-all text-md duration-200 hover:text-blue-900/70"
-               >
-                  Login
-               </Link>
-            )}
+            {
+               user?.role == UserRole.ADMIN && (
+                  <Link className="text-black/70 font-semibold text-sm transition-all duration-100 hover:text-blue-900/70" href="/dashboard">Dashboard</Link>
+               )
+            }
+            {
+               user?.role == UserRole.DOCTOR && (
+                  <Link
+                     className="text-black/70 font-semibold text-sm transition-all duration-100 hover:text-blue-900/70"
+                     href="/doctorinfo"
+                  >
+                     Manage
+                  </Link>
+               )
+            }
+            {
+               user ? (
+                  <SignoutButton />
+               ) : (
+                  <Link
+                     href="/login"
+                     className="font-semibold text-black/70 text-sm transition-all text-md duration-200 hover:text-blue-900/70"
+                  >
+                     Login
+                  </Link>
+               )
+            }
          </section>
          <section className="flex items-center min-[675px]:hidden">
             <ResposiveNavBar />
@@ -70,7 +79,7 @@ async function Navbar() {
                   Register
                </Link>
             )}
-            {session?.user.role === UserRole.ADMIN && !doctor && <CreateProfile />}
+            {session?.user.role === UserRole.DOCTOR && !doctor && <CreateProfile />}
             {user && (
                <Link href="/reservelist">
                   <svg

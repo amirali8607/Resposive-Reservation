@@ -28,7 +28,7 @@ function RegisterPage() {
                redirect("/login")
             }
          }
-      } className="flex flex-col w-[425px] py-8 gap-3 mx-auto items-center bg-white p-8 rounded-lg shadow-md shadow-blue-900 [&>*]:w-[380px]">
+      } className="flex flex-col w-[450px] gap-3 mx-auto items-center bg-white p-10 rounded-lg shadow-md shadow-blue-900 [&>*]:w-[380px]">
          <h1 className="text-blue-900 text-5xl text-center">Register</h1>
          <section className="flex flex-col gap-1">
             <p className="text-left text-[#403D39]">Username</p>

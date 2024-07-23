@@ -23,6 +23,9 @@ async function DetailsPage({ params }: { params: { id: string } }) {
    const doctor = await prisma.doctors.findMany({
       where: {
          id: params.id,
+      },
+      include: {
+         user: true
       }
    });
    const trick = await prisma.tricks.findMany({
@@ -40,7 +43,7 @@ async function DetailsPage({ params }: { params: { id: string } }) {
                >
                   <div className="size-60 mx-auto relative">
                      <Image
-                        src={item.image!}
+                        src={item.user.image!}
                         fill={true}
                         className="rounded-full border border-[#66bd91]"
                         alt=""
@@ -52,69 +55,72 @@ async function DetailsPage({ params }: { params: { id: string } }) {
                </main>
                <main className="bg-white text-center w-[80%] flex flex-col gap-6 mx-auto rounded-lg p-10">
                   <h1 className="font-light">Address: {item.addres}</h1>
-                  <Dialog>
-                     <DialogTrigger asChild>
-                        <Button className="w-full">Trick List</Button>
-                     </DialogTrigger>
-                     <DialogContent>
-                        <DialogHeader>
-                           <DialogTitle>Are you absolutely sure?</DialogTitle>
-                           <DialogDescription>
-                              This action cannot be undone. This will permanently delete your account
-                              and remove your data from our servers.
-                           </DialogDescription>
-                        </DialogHeader>
-                        <form
-                           action={async (formdata: FormData) => {
-                              "use server";
-                              const existsReserve = await prisma.reservelist.findFirst({
-                                 where: {
-                                    doctorId: item.id,
-                                    userId: session?.user.id!,
-                                 }
-                              })
-                              if (existsReserve) {
-                                 await prisma.reservelist.update({
+                  {item.user.id != session?.user.id && (
+                     <Dialog>
+                        <DialogTrigger asChild>
+                           <Button className="w-full">Trick List</Button>
+                        </DialogTrigger>
+                        <DialogContent>
+                           <DialogHeader>
+                              <DialogTitle>Are you absolutely sure?</DialogTitle>
+                              <DialogDescription>
+                                 This action cannot be undone. This will permanently delete your account
+                                 and remove your data from our servers.
+                              </DialogDescription>
+                           </DialogHeader>
+                           <form
+                              action={async (formdata: FormData) => {
+                                 "use server";
+                                 const existsReserve = await prisma.reservelist.findFirst({
                                     where: {
                                        doctorId: item.id,
                                        userId: session?.user.id!,
-                                       id: existsReserve.id
-                                    },
-                                    data: {
-                                       time: formdata.get("tricktime") as string
                                     }
                                  })
-                                 revalidatePath("/reservelist")
-                                 redirect("/reservelist")
-                              } else {
-                                 await prisma.reservelist.create({
-                                    data: {
-                                       doctorId: item.id,
-                                       userId: session?.user.id!,
-                                       time: formdata.get("tricktime") as string,
-                                    },
-                                 });
-                                 revalidatePath("/reservelist")
-                                 redirect("/reservelist")
+                                 if (existsReserve) {
+                                    await prisma.reservelist.update({
+                                       where: {
+                                          doctorId: item.id,
+                                          userId: session?.user.id!,
+                                          id: existsReserve.id
+                                       },
+                                       data: {
+                                          time: formdata.get("tricktime") as string
+                                       }
+                                    })
+                                    revalidatePath("/reservelist")
+                                    redirect("/reservelist")
+                                 } else {
+                                    await prisma.reservelist.create({
+                                       data: {
+                                          doctorId: item.id,
+                                          userId: session?.user.id!,
+                                          time: formdata.get("tricktime") as string,
+                                       },
+                                    });
+                                    revalidatePath("/reservelist")
+                                    redirect("/reservelist")
+                                 }
                               }
-                           }
-                           }
-                           className="flex flex-col gap-3"
-                        >
-                           <RadioGroup name="tricktime">
-                              {
-                                 trick.map((trickItem) => (
-                                    <div key={trickItem.id} className="flex gap-1 items-center">
-                                       <RadioGroupItem value={trickItem.times} id="r1" className="size-5" />
-                                       <Label className="font-semibold text-lg" htmlFor="r1">{trickItem.times}</Label>
-                                    </div>
-                                 ))
                               }
-                           </RadioGroup>
-                           <ReserveButton />
-                        </form>
-                     </DialogContent>
-                  </Dialog>
+                              className="flex flex-col gap-3"
+                           >
+                              <RadioGroup name="tricktime">
+                                 {
+                                    trick.map((trickItem) => (
+                                       <div key={trickItem.id} className="flex gap-1 items-center">
+                                          <RadioGroupItem value={trickItem.times} id="r1" className="size-5" />
+                                          <Label className="font-semibold text-lg" htmlFor="r1">{trickItem.times}</Label>
+                                       </div>
+                                    ))
+                                 }
+                              </RadioGroup>
+                              <ReserveButton />
+                           </form>
+                        </DialogContent>
+                     </Dialog>
+
+                  )}
                </main>
             </div>
          ))}

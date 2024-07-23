@@ -9,7 +9,13 @@ async function ReservelistPage() {
    const session = await auth()
    const reservelist = await prisma.reservelist.findMany({
       where: { userId: session?.user.id },
-      include: { doctor: true }
+      include: {
+         doctor: {
+            include: {
+               user: true
+            }
+         }
+      }
    })
    const list = await prisma.reservelist.findFirst()
    const trick = await prisma.tricks.findFirst({
@@ -23,7 +29,7 @@ async function ReservelistPage() {
             reservelist.map((item) => (
                <div key={item.id} className="flex flex-col gap-3 w-full mx-auto justify-center p-8 rounded-lg bg-white text-center">
                   <main className="size-40 mx-auto relative">
-                     <Image src={item.doctor.image!} fill={true} className="rounded-full" alt="" />
+                     <Image src={item.doctor.user.image!} fill={true} className="rounded-full" alt="" />
                   </main>
                   <h1 className="text-3xl font-bold">{item.doctor.name}</h1>
                   <p className="font-semibold">Time: {item.time}</p>

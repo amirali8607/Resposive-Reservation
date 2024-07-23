@@ -16,19 +16,24 @@ datasource db {
 enum UserRole {
   USER
   ADMIN
+  DOCTOR
 }
 
 model User {
-  id        String        @id @default(cuid())
-  name      String?
-  email     String        @unique
-  password  String
-  role      UserRole      @default(USER)
-  createdAt DateTime      @default(now())
-  updatedAt DateTime      @updatedAt
-  lists     Reservelist[]
-  doctors   Doctors[]
-  tricks    Tricks[]
+  id          String        @id @default(cuid())
+  image       String?
+  name        String?
+  email       String        @unique
+  password    String
+  phonenumber String
+  status      String?
+  color       String?
+  role        UserRole      @default(USER)
+  createdAt   String?
+  updatedAt   DateTime      @updatedAt
+  lists       Reservelist[]
+  doctors     Doctors[]
+  tricks      Tricks[]
 }
 
 model Doctors {
@@ -37,11 +42,20 @@ model Doctors {
   body      String
   expertise String
   addres    String
-  image     String?
   userId    String
   user      User          @relation(fields: [userId], references: [id])
   lists     Reservelist[]
   tricks    Tricks[]
+}
+
+model Siknesslist {
+  id          String  @id @default(cuid())
+  title       String  @unique
+  description String
+  stock       String
+  createdAt   String?
+  image       String?
+  compare     String?
 }
 
 model Tricks {
@@ -60,12 +74,4 @@ model Reservelist {
   doctorId String
   user     User    @relation(fields: [userId], references: [id])
   doctor   Doctors @relation(fields: [doctorId], references: [id])
-}
-
-model Siknesslist {
-  id          String  @id @default(cuid())
-  title       String  @unique
-  description String
-  image       String?
-  compare     String?
 }

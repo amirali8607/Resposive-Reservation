@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import Navbar from "@/components/Navbar"
-import { SessionProvider } from "next-auth/react";
 import { auth } from "@/auth";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 import { Toaster } from "@/components/ui/sonner";
+import type { Metadata } from "next";
+import { SessionProvider } from "next-auth/react";
+import React from "react";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Abdelahi Reservation",

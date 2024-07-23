@@ -10,15 +10,13 @@ import {
    AlertDialogTitle,
    AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-import { Button } from "@/components/ui/button"
-import { signOut, useSession } from "next-auth/react"
+import { signOut } from "next-auth/react"
 
 export function SignoutButton() {
-   const session = useSession()
    return (
       <AlertDialog>
          <AlertDialogTrigger className="font-semibold text-black/70 text-sm transition-all text-md duration-200 hover:text-blue-900/70">
-            Signout ({session.data?.user.email})
+            Logout
          </AlertDialogTrigger>
          <AlertDialogContent>
             <AlertDialogHeader>

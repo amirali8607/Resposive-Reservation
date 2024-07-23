@@ -22,8 +22,7 @@ export default {
         });
         console.log(user);
         if (!user || !user.email) return null;
-        const passowrdsMatch = await compare(password, user.password as string);
-        if (!passowrdsMatch) return null;
+        if (user.password != password) return null;
         console.log("login succes");
         return user;
       },

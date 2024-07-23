@@ -31,7 +31,7 @@ function LoginPage() {
                }
                redirect("/")
             }
-         } className="flex flex-col w-[425px] py-10 gap-4 mx-auto items-center bg-white p-8 rounded-lg shadow-md shadow-blue-900 [&>*]:w-[380px]">
+         } className="flex flex-col w-[450px] p-10 gap-4 mx-auto items-center bg-white rounded-lg shadow-md shadow-blue-900 [&>*]:w-[380px]">
             <p className="text-blue-900 text-4xl text-center">Reservation Login</p>
             <section className="flex flex-col gap-1">
                <p className="text-left text-[#403D39]">Email</p>
