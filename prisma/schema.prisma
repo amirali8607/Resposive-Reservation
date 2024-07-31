@@ -34,6 +34,7 @@ model User {
   lists       Reservelist[]
   doctors     Doctors[]
   tricks      Tricks[]
+  likes       Like[]
 }
 
 model Doctors {
@@ -43,19 +44,29 @@ model Doctors {
   expertise String
   addres    String
   userId    String
-  user      User          @relation(fields: [userId], references: [id])
+  user      User?         @relation(fields: [userId], references: [id])
   lists     Reservelist[]
   tricks    Tricks[]
 }
 
 model Siknesslist {
-  id          String  @id @default(cuid())
+  id          Int     @id @default(autoincrement())
   title       String  @unique
   description String
   stock       String
   createdAt   String?
   image       String?
   compare     String?
+  likes       Like[]
+}
+
+model Like {
+  id        String      @id @default(cuid())
+  postId    Int
+  post      Siknesslist @relation(fields: [postId], references: [id])
+  userId    String
+  user      User        @relation(fields: [userId], references: [id])
+  createdAt String
 }
 
 model Tricks {

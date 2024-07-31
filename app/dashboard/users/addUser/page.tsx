@@ -7,12 +7,12 @@ export default function AddUserPage() {
       <form action={
          async (formdata: FormData) => {
             "use server"
-            // await CreateUser(formdata)
+            await CreateUser(formdata)
             redirect("/dashboard")
          }
-      } className="w-full flex gap-4 ">
+      } className="w-full flex gap-4">
          <main className="bg-white rounded-lg p-6 w-full flex flex-col items-center h-fit gap-2 ">
-            <Image src={noprof} alt="" className="h-60 w-60" width={100} height={100} />
+            <Image src={noprof} alt="" className="h-60 w-60 rounded-full" width={100} height={100} />
             <label
                htmlFor="inputtt"
                className="flex items-center justify-center h-10 w-60 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-[#CCC5B9] transition-all duration-300 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
@@ -36,22 +36,24 @@ export default function AddUserPage() {
                   type="file"
                   id="inputtt"
                   name="file"
+                  required
                   className="hidden"
                />
             </label>
          </main>
          <main className="w-full flex flex-col gap-6 bg-white rounded-lg p-4">
             <h1 className="text-2xl font-semibold text-center">Add User Form</h1>
-            <input type="text" className="p-3 rounded-md bg-[#CCC5B9] outline-none placeholder-black" name="username" placeholder="Username" required />
+            <input type="text" className="p-3 rounded-md bg-[#CCC5B9] outline-none placeholder-black" name="name" placeholder="Username" required />
             <input type="text" className="p-3 rounded-md bg-[#CCC5B9] outline-none placeholder-black" name="email" placeholder="Email Address" required />
-            <input type="text" className="p-3 rounded-md bg-[#CCC5B9] outline-none placeholder-black" name="passowrd" placeholder="Passowrd" required />
-            <input type="text" className="p-3 rounded-md bg-[#CCC5B9] outline-none placeholder-black" name="phone" placeholder="Phone Number" />
-            <select name="isAdmin" className="p-3 rounded-md bg-[#CCC5B9] outline-none">
-               <option value="general" disabled>is Admin?</option>
-               <option value="user">Yes</option>
-               <option value="admin">No</option>
+            <input type="password" className="p-3 rounded-md bg-[#CCC5B9] outline-none placeholder-black" name="password" placeholder="Passowrd" required />
+            <input type="text" className="p-3 rounded-md bg-[#CCC5B9] outline-none placeholder-black" name="phone" placeholder="Phone Number" required />
+            <input type="text" className="p-3 rounded-md bg-[#CCC5B9] outline-none placeholder-black" name="createdAt" placeholder="Created At" required />
+            <select name="role" required className="p-3 rounded-md bg-[#CCC5B9] outline-none">
+               <option value="general" disabled>Role?</option>
+               <option value="USER">USER</option>
+               <option value="ADMIN">ADMIN</option>
             </select>
-            <select name="isActive" className="p-3 rounded-md bg-[#CCC5B9] outline-none">
+            <select name="isActive" required className="p-3 rounded-md bg-[#CCC5B9] outline-none">
                <option value="general" disabled>is Active?</option>
                <option value="done">Done</option>
                <option value="pending">Pending</option>

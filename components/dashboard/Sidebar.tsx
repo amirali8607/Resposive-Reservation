@@ -12,11 +12,11 @@ export default async function Sidebar() {
       }
    })
    return (
-      <div className="flex flex-col bg-white w-[250px] px-4 py-3 gap-2">
+      <div className="flex flex-col bg-white w-[225px] px-4 py-3 gap-2">
          <section id="profile" className="flex gap-4 items-center">
-            <Image src={findProfile?.image!} width={100} height={100} alt="" className="rounded-full w-12 h-12" />
-            <main className="flex flex-col">
-               <p>{findProfile?.name}</p>
+            <Image src={findProfile?.image!} width={100} height={100} alt="" className="rounded-full size-10" />
+            <main className="flex flex-col w-full">
+               <p className="text-xs font-semibold">{findProfile?.name}</p>
                <p className="opacity-60 text-xs">{findProfile?.role}</p>
             </main>
          </section>

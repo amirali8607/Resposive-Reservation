@@ -38,13 +38,6 @@ async function CreateProfile() {
                      <form action={
                         async (formdata: FormData) => {
                            "use server"
-                           const file: File | null = formdata.get("image") as unknown as File;
-                           if (!file) {
-                              throw new Error("no file uploaded");
-                           }
-                           const byte = await file.arrayBuffer();
-                           const buffer = Buffer.from(byte);
-                           const path = join(".", "public/image", file.name);
                            const existingDoctor = await prisma.doctors.findUnique({
                               where: {
                                  name: formdata.get("name") as string
@@ -53,20 +46,15 @@ async function CreateProfile() {
                            if (existingDoctor) {
                               return console.log("Your Profile has already been made!")
                            }
-                           return await writeFile(path, buffer).then(async () => {
-                              await prisma.doctors.create({
-                                 data: {
-                                    userId: session.user.id!,
-                                    name: formdata.get("name") as string,
-                                    expertise: formdata.get("expertise") as string,
-                                    body: formdata.get("body") as string,
-                                    addres: formdata.get("addres") as string,
-                                    image: path.replace("public", "").replace(/\\/g, "/"),
-                                 }
-                              })
-                              redirect('/')
-                           }
-                           )
+                           return await prisma.doctors.create({
+                              data: {
+                                 userId: session.user.id!,
+                                 name: formdata.get("name") as string,
+                                 expertise: formdata.get("expertise") as string,
+                                 body: formdata.get("body") as string,
+                                 addres: formdata.get("addres") as string,
+                              }
+                           })
                         }
                      } className="flex flex-col gap-2 bg-white rounded-lg">
                         <div>

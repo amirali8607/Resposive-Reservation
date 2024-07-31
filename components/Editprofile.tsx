@@ -13,7 +13,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "./ui/textarea";
 import { redirect } from "next/navigation";
 import prisma from "@/app/config/db";
-import { EditProfileButton } from "./SonnerButtons";
+import { EditProfileButton } from "./Buttons";
 import { auth } from "@/auth";
 async function EditProfile({ id }: { id: string }) {
    const session = await auth()

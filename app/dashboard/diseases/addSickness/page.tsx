@@ -1,21 +1,22 @@
 import Image from "next/image"
-import noprof from '@/public/image/555.jpg'
+import img from '@/public/image/6327211.png'
 import { redirect } from "next/navigation"
+import { CreateDiseases } from "@/app/actions/Dashboard/create"
 
 export default function AddSickness() {
    return (
       <form action={
          async (formdata: FormData) => {
             "use server"
-            // await CreateDiseases(formdata)
+            await CreateDiseases(formdata)
             redirect("/dashboard")
          }
       } className="w-full flex gap-4 ">
          <main className="bg-white rounded-lg p-6 w-full flex flex-col items-center h-fit gap-2 ">
-            <Image src={noprof} alt="" className="h-60 w-60" width={100} height={100} />
+            <Image src={img} alt="" className="h-60 w-60 rounded-md" width={100} height={100} />
             <label
                htmlFor="inputtt"
-               className="flex items-center justify-center h-10 w-60 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-[#CCC5B9] transition-all duration-300 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+               className="flex items-center justify-center h-10 w-60 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-[#CCC5B9] transition-all duration-300 dark:hover:bg-bray-800 dark:bg-gray-700 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
             >
                <svg
                   className="w-8 h-8 text-gray-500 dark:text-gray-400"
@@ -34,6 +35,7 @@ export default function AddSickness() {
                </svg>
                <input
                   type="file"
+                  required
                   id="inputtt"
                   name="file"
                   className="hidden"
@@ -43,9 +45,9 @@ export default function AddSickness() {
          <main className="w-full flex flex-col gap-6 bg-white rounded-lg p-4">
             <h1 className="text-2xl font-semibold">Add Sickness Form</h1>
             <input type="text" className="p-3 rounded-md bg-[#CCC5B9] outline-none placeholder-black" name="title" placeholder="Title" required />
-            <input type="text" className="p-3 rounded-md bg-[#CCC5B9] outline-none placeholder-black" name="stock" placeholder="Email Address" required />
+            <input type="text" className="p-3 rounded-md bg-[#CCC5B9] outline-none placeholder-black" name="stock" placeholder="Stock" required />
             <input type="text" className="p-3 rounded-md bg-[#CCC5B9] outline-none placeholder-black" name="createdAt" placeholder="CreatedAt" required />
-            <textarea rows={10} className="p-3 rounded-md bg-[#CCC5B9] outline-none placeholder-black" name="body" placeholder="Description"></textarea>
+            <textarea required rows={10} className="p-3 rounded-md bg-[#CCC5B9] outline-none placeholder-black" name="body" placeholder="Description"></textarea>
             <button className="bg-blue-900/80 text-white rounded-md font-semibold p-2" type="submit">Create Sickness</button>
          </main>
       </form>

@@ -1,11 +1,11 @@
 import { auth } from "@/auth";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import { Toaster } from "@/components/ui/sonner";
 import type { Metadata } from "next";
 import { SessionProvider } from "next-auth/react";
 import React from "react";
 import "./globals.css";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "Abdelahi Reservation",
@@ -21,11 +21,9 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <SessionProvider session={session}>
-        <body className="font-poppins h-screen flex flex-col gap-10 bg-[#e9e7e3]">
-          <Navbar />
+        <body className="font-poppins bg-[#e9e7e3]">
           <main>{children}</main>
           <Toaster />
-          <Footer />
         </body>
       </SessionProvider>
     </html>

@@ -48,7 +48,7 @@ async function Navbar() {
                user?.role == UserRole.DOCTOR && (
                   <Link
                      className="text-black/70 font-semibold text-sm transition-all duration-100 hover:text-blue-900/70"
-                     href="/doctorinfo"
+                     href="/yourprofile"
                   >
                      Manage
                   </Link>
