@@ -39,7 +39,7 @@ export const UpdateUser = async (id: string, data: FormData) => {
     console.log(error);
   }
 };
-export const UpdateDiseases = async (id: string, data: FormData) => {
+export const UpdateDiseases = async (id: number, data: FormData) => {
   try {
     const file: File | null = data.get("file") as unknown as File;
     if (!file) {

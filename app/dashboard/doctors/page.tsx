@@ -20,7 +20,7 @@ export default async function DoctorInfoPage({ searchParams }: { searchParams: P
       }
    })
    return (
-      <div className="w-full flex flex-col gap-6 bg-white p-4 rounded-lg">
+      <div className="w-full flex flex-col gap-6 bg-white dark:bg-[#151c2c] transition-all p-4 rounded-lg">
          <main className="flex justify-between">
             <Search />
             <Link href="/dashboard/doctors/addDoctor" className="bg-yellow-500/80 text-white p-1 rounded-md">Sync User</Link>

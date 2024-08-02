@@ -5,7 +5,7 @@ export default async function Information() {
    const sicknessStock = await prisma.$queryRaw`SELECT SUM(stock) as stock FROM Siknesslist;`
    return (
       <section id="detailsUser" className="grid grid-cols-3 gap-4">
-         <main className="flex flex-col gap-3 rounded-lg text-center bg-white p-4 hover:bg-[#e4e0d9] transition-all duration-200">
+         <main className="flex flex-col gap-3 rounded-lg text-center bg-white p-4 hover:bg-[#e4e0d9] dark:bg-[#151c2c] dark:hover:bg-[#242f4b] transition-all duration-200">
             <p className="flex gap-2">
                <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +25,7 @@ export default async function Information() {
             <p><span className="text-green-600">12%</span> more than previos week</p>
 
          </main>
-         <main className="flex flex-col gap-3 rounded-lg text-center bg-white p-4 hover:bg-[#e4e0d9] transition-all duration-200">
+         <main className="flex flex-col gap-3 rounded-lg text-center bg-white p-4 hover:bg-[#e4e0d9] dark:bg-[#151c2c] dark:hover:bg-[#242f4b] transition-all duration-200">
             <p className="flex gap-2">
                <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +45,7 @@ export default async function Information() {
             <p><span className="text-red-600">1%</span> more than previos week</p>
 
          </main>
-         <main className="flex flex-col gap-3 rounded-lg text-center bg-white p-4 hover:bg-[#e4e0d9] transition-all duration-200">
+         <main className="flex flex-col gap-3 rounded-lg text-center bg-white p-4 hover:bg-[#e4e0d9] dark:bg-[#151c2c] dark:hover:bg-[#242f4b] transition-all duration-200">
             <p className="flex gap-2">
                <svg
                   xmlns="http://www.w3.org/2000/svg"

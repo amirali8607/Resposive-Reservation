@@ -1,9 +1,8 @@
-"use server"
 import prisma from "@/app/config/db";
 import { auth } from "@/auth";
 import Image from "next/image";
 import Link from "next/link";
-import { SignoutButton } from "../SignoutButton";
+import { SignoutDashboardButton } from "./SignoutDashboardButton";
 export default async function Sidebar() {
    const session = await auth()
    const findProfile = await prisma.user.findFirst({
@@ -11,8 +10,9 @@ export default async function Sidebar() {
          id: session?.user.id
       }
    })
+
    return (
-      <div className="flex flex-col bg-white w-[225px] px-4 py-3 gap-2">
+      <div className={`flex flex-col bg-white w-[225px] px-4 py-3 gap-2 dark:bg-[#151c2c] transition-all`}>
          <section id="profile" className="flex gap-4 items-center">
             <Image src={findProfile?.image!} width={100} height={100} alt="" className="rounded-full size-10" />
             <main className="flex flex-col w-full">
@@ -191,7 +191,7 @@ export default async function Sidebar() {
                      clipRule="evenodd"
                   />
                </svg>
-               <SignoutButton />
+               <SignoutDashboardButton />
             </main>
          </section>
       </div>

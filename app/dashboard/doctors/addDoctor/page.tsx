@@ -10,7 +10,7 @@ export default async function AddDoctorPage() {
       }
    })
    return (
-      <form className="flex flex-col gap-4 bg-white rounded-md p-4" action={
+      <form className="flex flex-col gap-4 bg-white dark:bg-[#151c2c] transition-all rounded-md p-4" action={
          async (data: FormData) => {
             "use server"
             await CreateDoctor(data)
@@ -18,11 +18,11 @@ export default async function AddDoctorPage() {
          }
       }>
          <h1 className="text-center text-3xl font-semibold">Add Doctor Info</h1>
-         <input type="text" name="name" placeholder="Doctor name" className="p-3 rounded-md bg-[#CCC5B9]" />
-         <input type="text" name="expertise" placeholder="Expertise" className="p-3 rounded-md bg-[#CCC5B9]" />
-         <textarea rows={4} name="body" placeholder="Description" className="p-3 rounded-md bg-[#CCC5B9]"></textarea>
-         <textarea rows={4} placeholder="Address" name="address" className="p-3 rounded-md bg-[#CCC5B9]"></textarea>
-         <select className="p-3 rounded-md bg-[#CCC5B9]" name="isDoctor">
+         <input type="text" name="name" placeholder="Doctor name" className="p-3 rounded-md bg-[#CCC5B9] dark:bg-[#2d3b5e]" />
+         <input type="text" name="expertise" placeholder="Expertise" className="p-3 rounded-md bg-[#CCC5B9] dark:bg-[#2d3b5e]" />
+         <textarea rows={4} name="body" placeholder="Description" className="p-3 rounded-md bg-[#CCC5B9] dark:bg-[#2d3b5e]"></textarea>
+         <textarea rows={4} placeholder="Address" name="address" className="p-3 rounded-md bg-[#CCC5B9] dark:bg-[#2d3b5e]"></textarea>
+         <select className="p-3 rounded-md bg-[#CCC5B9] dark:bg-[#2d3b5e]" name="isDoctor">
             <option value="" disabled>Which User?</option>
             {
                UserId.map((item) => (

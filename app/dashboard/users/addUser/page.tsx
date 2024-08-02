@@ -11,7 +11,7 @@ export default function AddUserPage() {
             redirect("/dashboard")
          }
       } className="w-full flex gap-4">
-         <main className="bg-white rounded-lg p-6 w-full flex flex-col items-center h-fit gap-2 ">
+         <main className="bg-white dark:bg-[#151c2c] rounded-lg p-6 w-full flex flex-col items-center h-fit gap-2 ">
             <Image src={noprof} alt="" className="h-60 w-60 rounded-full" width={100} height={100} />
             <label
                htmlFor="inputtt"
@@ -41,19 +41,19 @@ export default function AddUserPage() {
                />
             </label>
          </main>
-         <main className="w-full flex flex-col gap-6 bg-white rounded-lg p-4">
+         <main className="w-full flex flex-col gap-6 bg-white dark:bg-[#151c2c] rounded-lg p-4">
             <h1 className="text-2xl font-semibold text-center">Add User Form</h1>
-            <input type="text" className="p-3 rounded-md bg-[#CCC5B9] outline-none placeholder-black" name="name" placeholder="Username" required />
-            <input type="text" className="p-3 rounded-md bg-[#CCC5B9] outline-none placeholder-black" name="email" placeholder="Email Address" required />
-            <input type="password" className="p-3 rounded-md bg-[#CCC5B9] outline-none placeholder-black" name="password" placeholder="Passowrd" required />
-            <input type="text" className="p-3 rounded-md bg-[#CCC5B9] outline-none placeholder-black" name="phone" placeholder="Phone Number" required />
-            <input type="text" className="p-3 rounded-md bg-[#CCC5B9] outline-none placeholder-black" name="createdAt" placeholder="Created At" required />
-            <select name="role" required className="p-3 rounded-md bg-[#CCC5B9] outline-none">
+            <input type="text" className="p-3 rounded-md bg-[#CCC5B9] outline-none placeholder-black dark:bg-[#2d3b5e] dark:placeholder-white" name="name" placeholder="Username" required />
+            <input type="text" className="p-3 rounded-md bg-[#CCC5B9] outline-none placeholder-black dark:bg-[#2d3b5e] dark:placeholder-white" name="email" placeholder="Email Address" required />
+            <input type="password" className="p-3 rounded-md bg-[#CCC5B9] outline-none placeholder-black dark:bg-[#2d3b5e] dark:placeholder-white" name="password" placeholder="Passowrd" required />
+            <input type="text" className="p-3 rounded-md bg-[#CCC5B9] outline-none placeholder-black dark:bg-[#2d3b5e] dark:placeholder-white" name="phone" placeholder="Phone Number" required />
+            <input type="text" className="p-3 rounded-md bg-[#CCC5B9] outline-none placeholder-black dark:bg-[#2d3b5e] dark:placeholder-white" name="createdAt" placeholder="Created At" required />
+            <select name="role" required className="p-3 rounded-md bg-[#CCC5B9] dark:bg-[#2d3b5e] outline-none">
                <option value="general" disabled>Role?</option>
                <option value="USER">USER</option>
                <option value="ADMIN">ADMIN</option>
             </select>
-            <select name="isActive" required className="p-3 rounded-md bg-[#CCC5B9] outline-none">
+            <select name="isActive" required className="p-3 rounded-md bg-[#CCC5B9] dark:bg-[#2d3b5e] outline-none">
                <option value="general" disabled>is Active?</option>
                <option value="done">Done</option>
                <option value="pending">Pending</option>

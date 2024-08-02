@@ -12,7 +12,7 @@ export default function AddSickness() {
             redirect("/dashboard")
          }
       } className="w-full flex gap-4 ">
-         <main className="bg-white rounded-lg p-6 w-full flex flex-col items-center h-fit gap-2 ">
+         <main className="bg-white dark:bg-[#151c2c] rounded-lg p-6 w-full flex flex-col items-center h-fit gap-2 ">
             <Image src={img} alt="" className="h-60 w-60 rounded-md" width={100} height={100} />
             <label
                htmlFor="inputtt"
@@ -42,12 +42,12 @@ export default function AddSickness() {
                />
             </label>
          </main>
-         <main className="w-full flex flex-col gap-6 bg-white rounded-lg p-4">
+         <main className="w-full flex flex-col gap-6 bg-white dark:bg-[#151c2c] rounded-lg p-4">
             <h1 className="text-2xl font-semibold">Add Sickness Form</h1>
-            <input type="text" className="p-3 rounded-md bg-[#CCC5B9] outline-none placeholder-black" name="title" placeholder="Title" required />
-            <input type="text" className="p-3 rounded-md bg-[#CCC5B9] outline-none placeholder-black" name="stock" placeholder="Stock" required />
-            <input type="text" className="p-3 rounded-md bg-[#CCC5B9] outline-none placeholder-black" name="createdAt" placeholder="CreatedAt" required />
-            <textarea required rows={10} className="p-3 rounded-md bg-[#CCC5B9] outline-none placeholder-black" name="body" placeholder="Description"></textarea>
+            <input type="text" className="p-3 rounded-md bg-[#CCC5B9] outline-none placeholder-black dark:bg-[#2d3b5e] dark:placeholder-white" name="title" placeholder="Title" required />
+            <input type="text" className="p-3 rounded-md bg-[#CCC5B9] outline-none placeholder-black dark:bg-[#2d3b5e] dark:placeholder-white" name="stock" placeholder="Stock" required />
+            <input type="text" className="p-3 rounded-md bg-[#CCC5B9] outline-none placeholder-black dark:bg-[#2d3b5e] dark:placeholder-white" name="createdAt" placeholder="CreatedAt" required />
+            <textarea required rows={10} className="p-3 rounded-md bg-[#CCC5B9] outline-none placeholder-black dark:bg-[#2d3b5e] dark:placeholder-white" name="body" placeholder="Description"></textarea>
             <button className="bg-blue-900/80 text-white rounded-md font-semibold p-2" type="submit">Create Sickness</button>
          </main>
       </form>

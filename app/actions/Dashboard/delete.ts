@@ -27,7 +27,7 @@ export const deleteDoctor = async (id: string) => {
     console.log(error);
   }
 };
-export const deleteSickness = async (id: string) => {
+export const deleteSickness = async (id: number) => {
   try {
     await prisma.siknesslist.delete({
       where: {

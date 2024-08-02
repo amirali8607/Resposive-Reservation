@@ -17,7 +17,7 @@ export default async function UsersIdPage({ params, searchParams }: { params: { 
             redirect("/dashboard/users")
          }
       } className="flex justify-center gap-4">
-         <main className="bg-white rounded-lg p-6 w-full flex flex-col items-center h-fit gap-2 ">
+         <main className="bg-white dark:bg-[#151c2c] rounded-lg p-6 w-full flex flex-col items-center h-fit gap-2 ">
             <Image src={findFromUser?.image!} alt="" className="h-60 w-60 rounded-full" width={100} height={100} />
             <label
                htmlFor="inputtt"
@@ -47,26 +47,26 @@ export default async function UsersIdPage({ params, searchParams }: { params: { 
             </label>
             <p className="font-bold text-lg">{findFromUser?.name}</p>
          </main>
-         <main className="w-full flex flex-col gap-4 bg-white rounded-lg p-6">
+         <main className="w-full flex flex-col gap-4 bg-white dark:bg-[#151c2c] rounded-lg p-6">
             <div className="flex flex-col gap-2">
                <p>Username</p>
-               <input defaultValue={searchParams.username} className="p-2 rounded-md outline-none bg-[#CCC5B9]" type="text" name="username" required />
+               <input defaultValue={searchParams.username} className="p-2 rounded-md outline-none bg-[#CCC5B9] dark:bg-[#2d3b5e]" type="text" name="username" required />
             </div>
             <div className="flex flex-col gap-2">
                <p>Email Address</p>
-               <input defaultValue={searchParams.email} className="p-2 rounded-md outline-none bg-[#CCC5B9]" type="text" name="email" required />
+               <input defaultValue={searchParams.email} className="p-2 rounded-md outline-none bg-[#CCC5B9] dark:bg-[#2d3b5e]" type="text" name="email" required />
             </div>
             <div className="flex flex-col gap-2">
                <p>Password</p>
-               <input defaultValue={searchParams.password} className="p-2 rounded-md outline-none bg-[#CCC5B9]" type="text" name="password" />
+               <input defaultValue={searchParams.password} className="p-2 rounded-md outline-none bg-[#CCC5B9] dark:bg-[#2d3b5e]" type="text" name="password" />
             </div>
             <div className="flex flex-col gap-2">
                <p>Phone Number</p>
-               <input defaultValue={searchParams.phonenumber} className="p-2 rounded-md outline-none bg-[#CCC5B9]" type="text" name="phone" />
+               <input defaultValue={searchParams.phonenumber} className="p-2 rounded-md outline-none bg-[#CCC5B9] dark:bg-[#2d3b5e]" type="text" name="phone" />
             </div>
             <div className="flex flex-col gap-2">
                <p>Role?</p>
-               <select defaultValue={searchParams.isAdmin} name="role" className="p-2 rounded-md bg-[#CCC5B9] outline-none">
+               <select defaultValue={searchParams.isAdmin} name="role" className="p-2 rounded-md bg-[#CCC5B9] dark:bg-[#2d3b5e] outline-none">
                   <option value="user">USER</option>
                   <option value="admin">ADMIN</option>
                   <option value="doctor">DOCTOR</option>
@@ -74,7 +74,7 @@ export default async function UsersIdPage({ params, searchParams }: { params: { 
             </div>
             <div className="flex flex-col gap-2">
                <p>is Active?</p>
-               <select defaultValue={searchParams.isActive} name="isActive" className="p-2 rounded-md bg-[#CCC5B9] outline-none">
+               <select defaultValue={searchParams.isActive} name="isActive" className="p-2 rounded-md bg-[#CCC5B9] dark:bg-[#2d3b5e] outline-none">
                   <option value="general" disabled>is Active?</option>
                   <option value="done">Done</option>
                   <option value="pending">Pending</option>

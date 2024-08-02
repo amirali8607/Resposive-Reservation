@@ -4,7 +4,7 @@ import Image from "next/image"
 export default async function LatestActivities() {
    const Users = await prisma.user.findMany()
    return (
-      <div className="flex flex-col gap-4 p-4 bg-white rounded-lg">
+      <div className="flex flex-col gap-4 p-4 bg-white dark:bg-[#151c2c] transition-all rounded-lg">
          <h1 className="text-2xl opacity-60">Latest Activities</h1>
          <table>
             <thead>

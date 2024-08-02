@@ -17,7 +17,7 @@ export default async function DiseasisPage({ searchParams }: { searchParams: Par
    })
    const session = await auth()
    return (
-      <div className="w-full flex flex-col gap-6 bg-white p-4 rounded-lg">
+      <div className="w-full flex flex-col gap-6 bg-white dark:bg-[#151c2c] p-4 rounded-lg">
          <main className="flex justify-between items-center">
             <Search />
             <Link href="/dashboard/diseases/addSickness" className="bg-blue-900/80 text-white p-1 rounded-md">Add New</Link>

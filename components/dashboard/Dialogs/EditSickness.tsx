@@ -1,12 +1,11 @@
-import { UpdateDiseases, UpdateDoctor } from "@/app/actions/Dashboard/update"
+import { UpdateDiseases } from "@/app/actions/Dashboard/update"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { redirect } from "next/navigation"
-import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import { redirect } from "next/navigation"
 
-export default function EditSicknessDialog({ id, searchParams }: { id: string, searchParams: { [key: string]: string | string[] | undefined }; }) {
+export default function EditSicknessDialog({ id, searchParams }: { id: number, searchParams: { [key: string]: string | string[] | undefined }; }) {
    return (
       <Dialog>
          <DialogTrigger asChild>

@@ -47,7 +47,7 @@ const data = [
 ];
 export default function Chart() {
    return (
-      <div className="flex flex-col h-96 bg-white rounded-lg p-4 gap-6">
+      <div className="flex flex-col h-96 bg-white dark:bg-[#151c2c] transition-all rounded-lg p-4 gap-6">
          <h1 className="text-2xl opacity-60">Weekly Recap</h1>
          <ResponsiveContainer width="100%" height="100%">
             <LineChart

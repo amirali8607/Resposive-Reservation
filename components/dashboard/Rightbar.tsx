@@ -1,7 +1,7 @@
 export default function Rightbar() {
    return (
       <div className="flex flex-col gap-4 w-full">
-         <section className="flex flex-col bg-gradient-to-b to-white from-[#CCC5B9] text-left p-6 gap-4 rounded-lg">
+         <section className="flex flex-col bg-gradient-to-b to-white from-[#CCC5B9] transition-all dark:to-[#151c2c] dark:from-[#0f121b] text-left p-6 gap-4 rounded-lg">
             <h1>Available Now</h1>
             <h1 className="text-lg font-bold">
                How to use the new version of the admin dashboard
@@ -28,7 +28,7 @@ export default function Rightbar() {
                Watch
             </button>
          </section>
-         <section className="flex flex-col bg-gradient-to-b to-white from-[#CCC5B9] text-left p-6 gap-4 rounded-lg">
+         <section className="flex flex-col bg-gradient-to-b to-white from-[#CCC5B9] dark:to-[#151c2c] dark:from-[#0f121b] text-left p-6 gap-4 rounded-lg">
             <h1>Coming Soon</h1>
             <h1 className="font-bold">
                New server actions is available. partial pre-rendering is coming up!

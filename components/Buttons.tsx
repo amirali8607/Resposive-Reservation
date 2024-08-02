@@ -171,13 +171,14 @@ export const DeleteUserButton = ({ id }: { id: string }) => {
       } className="bg-red-600 font-semibold text-white rounded-md p-1">Delete</button>
    )
 }
-export const DeleteSicknessButton = ({ id }: { id: string }) => {
+export const DeleteSicknessButton = ({ id }: { id: number }) => {
    return (
       <button onClick={
          () => {
             deleteSickness(id)
             toast("This Sickness has been Deleted!", {
                description: new Date().toString(),
+               className: "dark:bg-red-700 dark:text-white"
             })
          }
       } className="bg-red-600 font-semibold text-white rounded-md p-1">Delete</button>
