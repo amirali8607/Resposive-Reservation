@@ -17,7 +17,7 @@ async function Diseases() {
                key={item.id}
                className="flex flex-col justify-center gap-3 p-6 bg-white rounded-lg text-center"
             >
-               <main className="w-full h-52 mx-auto relative">
+               <main className="w-full h-60 mx-auto relative">
                   <Image
                      src={item.image!}
                      fill={true}

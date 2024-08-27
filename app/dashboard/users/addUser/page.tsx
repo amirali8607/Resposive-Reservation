@@ -51,6 +51,7 @@ export default function AddUserPage() {
             <select name="role" required className="p-3 rounded-md bg-[#CCC5B9] dark:bg-[#2d3b5e] outline-none">
                <option value="general" disabled>Role?</option>
                <option value="USER">USER</option>
+               <option value="DOCTOR">DOCTOR</option>
                <option value="ADMIN">ADMIN</option>
             </select>
             <select name="isActive" required className="p-3 rounded-md bg-[#CCC5B9] dark:bg-[#2d3b5e] outline-none">

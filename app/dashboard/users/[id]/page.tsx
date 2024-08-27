@@ -40,6 +40,7 @@ export default async function UsersIdPage({ params, searchParams }: { params: { 
                </svg>
                <input
                   type="file"
+                  // defaultValue={searchParams?.img}x
                   id="inputtt"
                   name="file"
                   className="hidden"
@@ -62,14 +63,14 @@ export default async function UsersIdPage({ params, searchParams }: { params: { 
             </div>
             <div className="flex flex-col gap-2">
                <p>Phone Number</p>
-               <input defaultValue={searchParams.phonenumber} className="p-2 rounded-md outline-none bg-[#CCC5B9] dark:bg-[#2d3b5e]" type="text" name="phone" />
+               <input defaultValue={searchParams.phone} className="p-2 rounded-md outline-none bg-[#CCC5B9] dark:bg-[#2d3b5e]" type="text" name="phonenumber" />
             </div>
             <div className="flex flex-col gap-2">
                <p>Role?</p>
                <select defaultValue={searchParams.isAdmin} name="role" className="p-2 rounded-md bg-[#CCC5B9] dark:bg-[#2d3b5e] outline-none">
-                  <option value="user">USER</option>
-                  <option value="admin">ADMIN</option>
-                  <option value="doctor">DOCTOR</option>
+                  <option value="USER">USER</option>
+                  <option value="ADMIN">ADMIN</option>
+                  <option value="DOCTOR">DOCTOR</option>
                </select>
             </div>
             <div className="flex flex-col gap-2">

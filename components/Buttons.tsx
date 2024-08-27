@@ -1,8 +1,8 @@
 "use client";
-import { deleteDoctor, deleteSickness, deleteUser } from "@/app/actions/Dashboard/delete";
+import { deleteDoctor, deleteSickness } from "@/app/actions/Dashboard/delete";
+import { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "./ui/button";
-import { useEffect, useState } from "react";
 
 export const ReserveButton = () => {
    return (
@@ -160,10 +160,25 @@ export const CancelTrick = () => {
    );
 };
 export const DeleteUserButton = ({ id }: { id: string }) => {
+   const HandleDelete = async () => {
+      try {
+         const response = await fetch("/api/deleteUser", {
+            method: "DELETE",
+            headers: {
+               'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id })
+         })
+         if (!response.ok)
+            console.error("Error")
+      } catch (error) {
+         console.log(error)
+      }
+   }
    return (
       <button onClick={
          () => {
-            deleteUser(id)
+            HandleDelete()
             toast("Delete doctor profile in doctors page!", {
                description: new Date().toString(),
             })

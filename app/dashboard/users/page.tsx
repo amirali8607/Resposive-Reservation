@@ -47,7 +47,7 @@ export default async function UsersPage({ searchParams }: { searchParams: Params
                         <td className="font-bold">{item.role}</td>
                         <td>
                            <div className="flex gap-1">
-                              <Link href={{ pathname: `/dashboard/users/${item.id}`, query: { username: item.name, email: item.email, password: item.password, phonenumber: item.phonenumber, isAdmin: item.role, isActive: item.status } }} className="rounded-md bg-green-600 px-2 p-1 text-white font-semibold">Edit</Link>
+                              <Link href={{ pathname: `/dashboard/users/${item.id}`, query: { img: item.image, username: item.name, email: item.email, password: item.password, phone: item.phonenumber, isAdmin: item.role, isActive: item.status } }} className="rounded-md bg-green-600 px-2 p-1 text-white font-semibold">Edit</Link>
                               <DeleteUserButton id={item.id} />
                            </div>
                         </td>

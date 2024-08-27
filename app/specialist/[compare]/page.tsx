@@ -22,10 +22,10 @@ async function SpecialistPage({ params }: { params: { compare: string } }) {
          <main className="grid grid-cols-2 w-[80%] gap-6 mx-auto p-6 max-[675px]:flex max-[675px]:flex-col">
             {
                specialistMap.map((item) => (
-                  <div key={item.id} className={`flex flex-col justify-center p-8 gap-3 rounded-lg ${session?.user.id == item.user.id ? "bg-blue-300" : "bg-white"} text-center`}>
+                  <div key={item.id} className={`flex flex-col justify-center p-8 gap-3 rounded-lg ${session?.user.id == item.user?.id ? "bg-blue-300" : "bg-white"} text-center`}>
                      <main className="size-40 mx-auto relative">
                         <Image
-                           src={item.user.image!}
+                           src={item.user?.image!}
                            fill={true}
                            className="rounded-full"
                            alt=""
