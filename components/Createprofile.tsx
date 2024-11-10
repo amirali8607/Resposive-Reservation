@@ -1,3 +1,6 @@
+import prisma from "@/app/config/db";
+import { auth } from "@/auth";
+import { Button } from "@/components/ui/button";
 import {
    Dialog,
    DialogContent,
@@ -6,16 +9,10 @@ import {
    DialogTitle,
    DialogTrigger
 } from "@/components/ui/dialog";
-import prisma from "@/app/config/db";
-import { auth } from "@/auth";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { UserRole } from "@prisma/client";
-import { writeFile } from "fs/promises";
-import { redirect } from "next/navigation";
-import { join } from "path";
 
 async function CreateProfile() {
    const session = await auth()
@@ -34,10 +31,9 @@ async function CreateProfile() {
                </DialogHeader>
 
                {
-                  session?.user.role === UserRole.ADMIN && (
+                  session?.user.role === UserRole.DOCTOR && (
                      <form action={
                         async (formdata: FormData) => {
-                           "use server"
                            const existingDoctor = await prisma.doctors.findUnique({
                               where: {
                                  name: formdata.get("name") as string

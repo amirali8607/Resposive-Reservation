@@ -1,32 +1,36 @@
-"use client"
+
 
 import { Login } from "@/app/actions/Login";
+import { auth } from "@/auth";
+import Navbar from "@/components/Navbar";
 import { useToast } from "@/components/ui/use-toast";
 import { UserRole } from "@prisma/client";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-function LoginPage() {
-   const { toast } = useToast()
-   const session = useSession()
+async function LoginPage() {
+   // const { toast } = useToast()
+   const session = await auth()
    return (
-      <>
+      <div className="flex flex-col gap-10 h-screen">
+         <Navbar />
          <form action={
             async (formdata: FormData) => {
+               "use server"
                const result = await Login(formdata)
                if (result?.error) {
-                  toast({
-                     title: "Login Failed",
-                     variant: "destructive"
-                  })
+                  // toast({
+                  //    title: "Login Failed",
+                  //    variant: "destructive"
+                  // })
                } else {
-                  toast({
-                     title: "Login Succesfull",
-                     variant: "default"
-                  })
+                  // toast({
+                  //    title: "Login Succesfull",
+                  //    variant: "default"
+                  // })
                }
-               if (session.data?.user.role === UserRole.ADMIN) {
+               if (session?.user.role === UserRole.ADMIN) {
                   return redirect("/admin")
                }
                redirect("/")
@@ -53,7 +57,7 @@ function LoginPage() {
                <Link href="/register" className="text-[#403D39] text-center">You dont have an account?</Link>
             </section>
          </form>
-      </>
+      </div>
    );
 }
 
